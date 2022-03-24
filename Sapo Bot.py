@@ -23,8 +23,8 @@ estensioni = [("JPEG (*.jpg)", "*.jpg"),
               ("All files (*.*)", "*.*")]
 #layout GUI           
 sg.theme('DarkTeal7')
-layout = [  [sg.Text('Inserisci un messaggio')],
-            [sg.Multiline(no_scrollbar=True, size=(50,6), key="testo")],
+layout = [  [sg.Text('Inserisci un messaggio, un immagine o entrambi')],
+            [sg.Multiline(no_scrollbar=True, size=(10,8), key="testo", expand_x=True, expand_y=True)],
             [sg.Button('Invia messaggio'), sg.FileBrowse("Aggiungi foto",file_types=estensioni, key = "img", target="path"), sg.Button("Rimuovi foto")],
             [sg.Text('',key = "check"), sg.Input('', key="path", visible=False)] ]
 
@@ -45,13 +45,13 @@ def message(txt,img):
         
 #main
 def main():
-    window = sg.Window('TEST', layout)
+    window = sg.Window('TelePonti', layout, resizable=True, element_justification='center')
 
     while True:
         event, values = window.read(100)
         #visualizzazione percorso foto (se presente)
         if values["path"] != '':
-            window["check"].update("Foto inserita: {}".format(values["path"]))
+            window["check"].update("Foto inserita: \n{}".format(values["path"]))
         else:
             window["check"].update("")
 
