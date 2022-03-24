@@ -43,7 +43,7 @@ def message(msg):
     except:
         sg.Popup("errore nell'invio")
         
-def img(msg):
+#def img(msg):
     
     
 
